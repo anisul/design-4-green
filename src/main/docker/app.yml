@@ -1,0 +1,14 @@
+version: '2'
+services:
+    design4green-app:
+        image: design4green
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://design4green-postgresql:5432/design4green
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    design4green-postgresql:
+        extends:
+            file: postgresql.yml
+            service: design4green-postgresql
